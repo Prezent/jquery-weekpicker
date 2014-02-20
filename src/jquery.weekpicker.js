@@ -262,7 +262,12 @@
     $.datepicker._base_setDate = $.datepicker._setDate;
     $.datepicker._setDate = function (inst, date, noChange) {
         var result = this._base_setDate(inst, date, noChange);
-        this._get(inst, 'weekpicker')._setDates();
+        var wp_inst = this._get(inst, 'weekpicker');
+
+        if (wp_inst) {
+            wp_inst._setDates();
+        }
+
         return result;
     };
 
@@ -272,7 +277,12 @@
     $.datepicker._base_setDateFromField = $.datepicker._setDateFromField;
     $.datepicker._setDateFromField = function(inst, noDefault) {
         var result = this._base_setDateFromField(inst, noDefault);
-        this._get(inst, 'weekpicker')._setDates();
+        var wp_inst = this._get(inst, 'weekpicker');
+
+        if (wp_inst) {
+            wp_inst._setDates();
+        }
+
         return result;
     };
 
@@ -283,7 +293,12 @@
     $.datepicker._selectDay = function(id, month, year, td) {
         var inst = $.datepicker._getInst($(id)[0]);
         var result = this._base_selectDay(id, month, year, td);
-        this._get(inst, 'weekpicker')._setDates();
+        var wp_inst = this._get(inst, 'weekpicker');
+
+        if (wp_inst) {
+            wp_inst._setDates();
+        }
+
         return result;
     };
 
@@ -293,7 +308,12 @@
     $.datepicker._base_formatDate = $.datepicker._formatDate;
     $.datepicker._formatDate = function(inst, day, month, year) {
         var result = this._base_formatDate(inst, day, month, year);
-        this._get(inst, 'weekpicker')._setDates();
+        var wp_inst = this._get(inst, 'weekpicker');
+
+        if (wp_inst) {
+            wp_inst._setDates();
+        }
+
         return result;
     };
 
