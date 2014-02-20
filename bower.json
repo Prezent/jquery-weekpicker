@@ -1,6 +1,6 @@
 {
     "name": "jquery-weekpicker",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "homepage": "https://github.com/Prezent/jquery-weekpicker",
     "authors": [
         "Prezent Internet B.V. <info@prezent.nl>",
@@ -14,6 +14,10 @@
         "week"
     ],
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Prezent/jquery-weekpicker.git"
+    },
     "dependencies": {
         "jquery-ui": "~1.9.2"
     }
