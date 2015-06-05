@@ -146,7 +146,7 @@
                     var result = [true, cssClass];
 
                     if ($.isFunction(wp_inst._defaults.evnts.beforeShowDay)) {
-                        wp_inst._defaults.evnts.beforeShowDay.call($input[0], date).each(function (i, v) {
+                        $.each(wp_inst._defaults.evnts.beforeShowDay.call($input[0], date), function (i, v) {
                             if (i === 1) {
                                 v = [v, cssClass].join(' ').trim();
                             }
