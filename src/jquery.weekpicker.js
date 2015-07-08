@@ -105,28 +105,6 @@
                  */
                 onSelect: function (dateText, dp_inst) {
                     wp_inst._setDates();
-                    var dateFormat = dp_inst.settings.dateFormat || $.datepicker._defaults.dateFormat;
-
-                    // Update startField
-                    if (wp_inst._defaults.startField) {
-                        var date = $.datepicker.formatDate(dateFormat, wp_inst.startDate, dp_inst.settings);
-                        $(wp_inst._defaults.startField).val(date);
-
-                        if ($(wp_inst._defaults.startField)[0] == $input[0]) {
-                            $input.datepicker('setDate', date);
-                        }
-                    }
-
-                    // Update endField
-                    if (wp_inst._defaults.endField) {
-                        var date = $.datepicker.formatDate(dateFormat, wp_inst.endDate, dp_inst.settings);
-                        $(wp_inst._defaults.endField).val(date);
-
-                        if ($(wp_inst._defaults.endField)[0] == $input[0]) {
-                            $input.datepicker('setDate', date);
-                        }
-                    }
-
                     wp_inst._selectCurrentWeek();
 
                     if ($.isFunction(wp_inst._defaults.evnts.onSelect)) {
@@ -217,6 +195,37 @@
 
             this.startDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - offset);
             this.endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - offset + this._defaults.weekLength - 1);
+
+            wp_inst._setDateFields();
+        },
+
+        /*
+         * Update start/end form fields
+         */
+        _setDateFields: function () {
+            var dp_inst = this.$input.data('datepicker');
+            var wp_inst = $.datepicker._get(dp_inst, 'weekpicker');
+            var dateFormat = dp_inst.settings.dateFormat || $.datepicker._defaults.dateFormat;
+
+            // Update startField
+            if (wp_inst._defaults.startField) {
+                var date = $.datepicker.formatDate(dateFormat, wp_inst.startDate, dp_inst.settings);
+                $(wp_inst._defaults.startField).val(date);
+
+                if ($(wp_inst._defaults.startField)[0] == $input[0]) {
+                    $input.datepicker('setDate', date);
+                }
+            }
+
+            // Update endField
+            if (wp_inst._defaults.endField) {
+                var date = $.datepicker.formatDate(dateFormat, wp_inst.endDate, dp_inst.settings);
+                $(wp_inst._defaults.endField).val(date);
+
+                if ($(wp_inst._defaults.endField)[0] == $input[0]) {
+                    $input.datepicker('setDate', date);
+                }
+            }
         }
 
     });
