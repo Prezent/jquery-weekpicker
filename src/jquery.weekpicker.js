@@ -213,9 +213,9 @@
                 var date = $.datepicker.formatDate(dateFormat, wp_inst.startDate, dp_inst.settings);
                 $(wp_inst._defaults.startField).val(date);
 
-                if ($(wp_inst._defaults.startField)[0] == $input[0]) {
+                /*if ($(wp_inst._defaults.startField)[0] == $input[0]) {
                     $input.datepicker('setDate', date);
-                }
+                }*/
             }
 
             // Update endField
@@ -223,9 +223,9 @@
                 var date = $.datepicker.formatDate(dateFormat, wp_inst.endDate, dp_inst.settings);
                 $(wp_inst._defaults.endField).val(date);
 
-                if ($(wp_inst._defaults.endField)[0] == $input[0]) {
+                /*if ($(wp_inst._defaults.endField)[0] == $input[0]) {
                     $input.datepicker('setDate', date);
-                }
+                }*/
             }
             
             // Update weekField
