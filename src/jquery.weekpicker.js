@@ -212,8 +212,8 @@
                 var date = $.datepicker.formatDate(dateFormat, wp_inst.startDate, dp_inst.settings);
                 $(wp_inst._defaults.startField).val(date);
 
-                if ($(wp_inst._defaults.startField)[0] == $input[0]) {
-                    $input.datepicker('setDate', date);
+                if ($(wp_inst._defaults.startField)[0] == wp_inst.$input[0]) {
+                    wp_inst.$input.datepicker('setDate', date);
                 }
             }
 
@@ -222,8 +222,8 @@
                 var date = $.datepicker.formatDate(dateFormat, wp_inst.endDate, dp_inst.settings);
                 $(wp_inst._defaults.endField).val(date);
 
-                if ($(wp_inst._defaults.endField)[0] == $input[0]) {
-                    $input.datepicker('setDate', date);
+                if ($(wp_inst._defaults.endField)[0] == wp_inst.$input[0]) {
+                    wp_inst.$input.datepicker('setDate', date);
                 }
             }
         }
