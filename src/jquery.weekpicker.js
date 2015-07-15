@@ -38,6 +38,7 @@
             showWeek: true,
             startField: null,
             endField: null,
+            weekField: null,
         };
     };
 
@@ -200,7 +201,7 @@
         },
 
         /*
-         * Update start/end form fields
+         * Update start/end/week form fields
          */
         _setDateFields: function () {
             var dp_inst = this.$input.data('datepicker');
@@ -226,7 +227,13 @@
                     wp_inst.$input.datepicker('setDate', date);
                 }
             }
-        }
+            
+            // Update weekField
+            if (wp_inst._defaults.weekField) {
+                var wk = $.datepicker.iso8601Week(new Date(wp_inst.startDate));
+                $(wp_inst._defaults.weekField).val(wk);
+            }
+        },
 
     });
 
