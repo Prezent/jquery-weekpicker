@@ -233,7 +233,7 @@
                 var wk = $.datepicker.iso8601Week(new Date(wp_inst.startDate));
                 $(wp_inst._defaults.weekField).val(wk);
             }
-        }
+        },
 
     });
 
