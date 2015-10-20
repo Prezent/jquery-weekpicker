@@ -54,6 +54,18 @@
             return $this;
         },
 
+        _setupWeekpicker: function ($dp) {
+            $dp.addClass('ui-weekpicker');
+
+            // Highlight the entire week row
+            $dp.on('mousemove', '.ui-datepicker-calendar tr', function () {
+                $(this).find('td a').addClass('ui-state-hover');
+            });
+            $dp.on('mouseleave', '.ui-datepicker-calendar tr', function () {
+                $(this).find('td a').removeClass('ui-state-hover');
+            });
+        },
+
         /*
          * Create a new weekpicker instance
          */
@@ -71,17 +83,8 @@
                  * Add weekpicker class
                  */
                 beforeShow: function (input, dp_inst) {
-                    $dp = $('#ui-datepicker-div');
-                    $dp.addClass('ui-weekpicker');
+                    wp_inst._setupWeekpicker(dp_inst.dpDiv);
                     wp_inst._selectCurrentWeek();
-
-                    // Highlight the entire week row
-                    $dp.on('mousemove', '.ui-datepicker-calendar tr', function () {
-                        $(this).find('td a').addClass('ui-state-hover');
-                    });
-                    $dp.on('mouseleave', '.ui-datepicker-calendar tr', function () {
-                        $(this).find('td a').removeClass('ui-state-hover');
-                    });
 
                     if ($.isFunction(wp_inst._defaults.evnts.beforeShow)) {
                         return wp_inst._defaults.evnts.beforeShow.call($input[0], input, dp_inst);
@@ -92,7 +95,7 @@
                  * Remove weekpicker class
                  */
                 onClose: function (dateText, dp_inst) {
-                    $('#ui-datepicker-div').removeClass('ui-weekpicker');
+                    dp_inst.dpDiv.removeClass('ui-weekpicker');
                     $input.blur();
 
                     if ($.isFunction(wp_inst._defaults.evnts.onClose)) {
@@ -254,6 +257,12 @@
                 return this.each(function () {
                     var $t = $(this);
                     $t.datepicker($.weekpicker._newInst($t, o)._defaults);
+
+                    var dp_inst = $t.data('datepicker');
+
+                    if (dp_inst.inline) {
+                        $.weekpicker._setupWeekpicker(dp_inst.dpDiv);
+                    }
                 });
             }
         }
