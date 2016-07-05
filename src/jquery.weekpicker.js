@@ -59,10 +59,14 @@
 
             // Highlight the entire week row
             $dp.on('mousemove', '.ui-datepicker-calendar tr', function () {
-                $(this).find('td a').addClass('ui-state-hover');
+                if ($(this).parents('.ui-weekpicker').length) {
+                    $(this).find('td a').addClass('ui-state-hover');
+                }
             });
             $dp.on('mouseleave', '.ui-datepicker-calendar tr', function () {
-                $(this).find('td a').removeClass('ui-state-hover');
+                if ($(this).parents('.ui-weekpicker').length) {
+                    $(this).find('td a').removeClass('ui-state-hover');
+                }
             });
         },
 
